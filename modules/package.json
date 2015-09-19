@@ -1,0 +1,11 @@
+{
+  "name": "boy",
+  "main": "index.html",
+  "window": {
+        "toolbar": false,
+        "width": 1000,
+        "height": 600,
+        "frame": false,
+        "icon": "images/appIcon_128.png"
+    }
+}

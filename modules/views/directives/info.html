@@ -1,0 +1,53 @@
+<div class="grid">
+    <div class="row cells4">
+        <div class="cell">
+            <may-i-help-you value=searchText></may-i-help-you>
+            <div class="grid margin20">
+                <div class="row cells4">
+                    <div class="cell">
+                        <button class="button cycle-button large-button" ng-click="onNew('on new')"><span class="icon mif-plus"></span></button>
+                    </div>
+                    <div class="cell">
+                        <button class="button cycle-button large-button" ng-click="onDelete('on delete')"><span class="icon mif-cross"></span></button>
+                    </div>
+                    <div class="cell">
+                        <button class="button cycle-button large-button" ng-click="onSave('on save')"><span class="icon mif-floppy-disk"></span></button>
+                    </div>
+                    <div class="cell">
+                        <label class="switch place-right" style="margin-top:10px">
+                            <input type="checkbox" ng-model="refineSwitch">
+                            <span class="check"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="listview">
+                <div ng-if="newInfo" class="info-list-data">
+                    <div class="input-control text">
+                        <input type="text" placeholder="Title ..." ng-model="newInfo.title">
+                    </div>
+                </div>
+                <div ng-repeat="listItem in infoList">
+                    <div ng-if="!delInitiate" ng-click="onInfoSelect(listItem.info)" class="info-list-data">
+                        <span class="list-title"><strong> {{listItem.title}}</strong></span>
+                    </div>
+                    <div ng-if="delInitiate" ng-click="onInfoSelect(listItem.info)" class="info-list-data">
+                        <label class="switch">
+                            <input type="checkbox" ng-model="listItem.marked">
+                            <span class="check"></span>
+                            <span class="list-title"><strong> &nbsp;&nbsp;&nbsp; {{listItem.title}} </strong></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell colspan3">
+            <text-angular 
+                          ng-model="selectedInfo"
+                          ta-toolbar="[['h1','h2','h3', 'bold', 'italics', 'ul', 'html']]"
+                          ta-toolbar-class="group" ta-toolbar-button-class="button">
+            </text-angular>
+        </div>
+    </div>
+</div>
