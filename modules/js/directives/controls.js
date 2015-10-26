@@ -24,17 +24,33 @@ neuronModule.directive('mayIHelpYouWhite', function () {
     };
 });
 
-neuronModule.directive('appBarInfo', function () {
+neuronModule.directive('appBarCtrlData', function () {
     return {
         restrict:'E',
-        scope: { title : '@'},
+        scope: { 
+                title : '@',
+                menus : '@',
+                menuIds : '@',
+                action : '='
+               },
         template:  '<div class="app-bar darcula">' +
                         '<a class="app-bar-element" href="#/main"><span class="icon mif-home"></span> Home</a>' +
                         '<span class="app-bar-divider"></span>' +
                         '<ul class="app-bar-menu">' +
                             '<li><a href=""><h3>{{title}}</h3></a></li>' +
+                            '<li ng-repeat="option in menuOptions track by $index">' +
+                                '<a ng-click="action(menuActions[$index])">{{option}}</a>' +
+                            '</li>' +
                         '</ul>' +
-                    '</div>'
+                    '</div>',
+        link:function(scope, element, attrs){
+                    if (!attrs.menus) { attrs.menus = '[]'; }
+                    if (!attrs.menuIds) { attrs.menuIds = '[]'; }
+                    if (!attrs.groups) { attrs.groups = '[]'; }
+                    if (!attrs.groupIds) { attrs.groupIds = '[]'; }
+                    scope.menuOptions=JSON.parse(attrs.menus);
+                    scope.menuActions=JSON.parse(attrs.menuIds);
+                }
     };
 });
 

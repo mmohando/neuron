@@ -11,6 +11,10 @@ neuronModule.config(['$routeProvider',
                     templateUrl: 'views/main.html',
                     controller: 'MainController'
                 }).
+                when('/incidents', {
+                    templateUrl: 'views/incidents.html',
+                    controller: 'IncidentsController'
+                }).
                 otherwise({
                     redirectTo: '/main'
                 });

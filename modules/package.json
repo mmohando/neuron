@@ -5,7 +5,10 @@
         "toolbar": false,
         "width": 1000,
         "height": 600,
-        "frame": false,
+        "frame": true,
         "icon": "images/appIcon_128.png"
-    }
+    },
+  "dependencies": {
+    "mongodb": "^2.0.46"
+  }
 }
